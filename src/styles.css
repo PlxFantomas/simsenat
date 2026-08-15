@@ -1,5 +1,37 @@
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Light.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Book.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Gotham', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #171b22;
   background: #f4f3ee;
   font-synthesis: none;
@@ -1206,6 +1238,8 @@ a {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 8px rgb(23 27 34 / 5%);
 }
 
 .zoom-controls button {
@@ -1253,35 +1287,42 @@ a {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background-color: #f9f9f6;
-  background-image: radial-gradient(#dcddd8 0.65px, transparent 0.65px);
-  background-size: 13px 13px;
+  padding: clamp(14px, 2vw, 26px);
+  border-top: 1px solid rgb(255 255 255 / 70%);
+  background:
+    radial-gradient(circle at 50% 44%, rgb(255 255 255 / 92%) 0%, transparent 58%),
+    linear-gradient(180deg, #fbfbf8 0%, #f2f4ef 100%);
 }
 
-.department-map-stage svg {
+.department-communes-svg {
+  display: block;
   width: 100%;
   height: 100%;
+  max-width: 980px;
   max-height: 620px;
+  filter: drop-shadow(0 9px 16px rgb(40 47 44 / 8%));
 }
 
 .commune-shape {
   stroke: white;
-  stroke-width: 0.7;
+  stroke-width: 0.8;
   vector-effect: non-scaling-stroke;
   cursor: pointer;
-  transition: opacity 100ms ease, stroke 100ms ease;
+  transition: fill 120ms ease, opacity 120ms ease, stroke 120ms ease, filter 120ms ease;
 }
 
 .commune-shape:hover,
 .commune-shape:focus {
-  opacity: .72;
-  stroke: #171b22;
-  stroke-width: 1.3;
+  opacity: .9;
+  stroke: var(--navy);
+  stroke-width: 1.5;
+  filter: brightness(.94) saturate(1.08) drop-shadow(0 2px 2px rgb(22 37 97 / 22%));
 }
 
 .commune-shape.is-selected {
-  stroke: #171b22;
-  stroke-width: 2;
+  stroke: var(--navy);
+  stroke-width: 2.2;
+  filter: drop-shadow(0 2px 3px rgb(22 37 97 / 28%));
 }
 
 .commune-tooltip {
@@ -1367,7 +1408,7 @@ a {
   display: grid;
   grid-template-columns: 7px minmax(0, 1fr) auto;
   gap: 7px;
-  align-items: center;
+  align-items: start;
 }
 
 .party-dot {
@@ -1377,14 +1418,12 @@ a {
 }
 
 .result-name-row > strong {
-  overflow: hidden;
   font-size: 11px;
-  font-weight: 600;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-weight: 500;
+  line-height: 1.3;
 }
 
-.result-name-row > b { color: var(--navy); font-size: 12px; }
+.result-name-row > b { color: var(--navy); font-size: 12px; white-space: nowrap; }
 .result-name-row > b small { font-size: 10px; font-weight: 600; }
 
 .result-bar-track,

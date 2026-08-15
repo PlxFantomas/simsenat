@@ -63,7 +63,7 @@ export function ResultsPanel({
           <div className="result-row" key={list.id}>
             <div className="result-name-row">
               <span className="party-dot" style={{ background: NUANCE_COLORS[list.nuance] }} />
-              <strong>{list.shortName}</strong>
+              <strong>Liste {list.head}</strong>
               <b>{wonSeats} <small>siège{wonSeats > 1 ? 's' : ''}</small></b>
             </div>
             <div className="result-bar-track">

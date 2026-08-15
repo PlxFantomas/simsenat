@@ -45,7 +45,7 @@ export function DepartmentMap({
 
   const featuresWithPaths = useMemo(() => {
     if (!features.length) return []
-    const pathFor = createPathBuilder(features, 820, 620, 18)
+    const pathFor = createPathBuilder(features, 820, 620, 28, { geographicAspect: true })
     return features.map((feature) => ({
       feature,
       path: pathFor(feature.geometry),
@@ -166,7 +166,13 @@ export function DepartmentMap({
         )}
         {error && <div className="map-error">{error}</div>}
         {featuresWithPaths.length > 0 && (
-          <svg viewBox="0 0 820 620" aria-hidden="true" focusable="false">
+          <svg
+            className="department-communes-svg"
+            viewBox="0 0 820 620"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+            focusable="false"
+          >
             <g style={{ transform: `scale(${zoom})`, transformOrigin: 'center', transition: 'transform 180ms ease' }}>
               {featuresWithPaths.map(({ feature, path }) => (
                 <path
